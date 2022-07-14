@@ -3,7 +3,7 @@ class Dimen {
   static const double borderInput = 10.0;
   static const double paddingChildInput = 10.0;
   /// button
-  static const double radiousButton = 100.0;
+  static const double radiousButton = 10.0;
 
   /// dialog
   static const double dialogRadius = 15;
