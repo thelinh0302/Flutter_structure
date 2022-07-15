@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:structure/resource/size_config.dart';
+import 'package:structure/views/introducePage/components/body.dart';
 
 class IntroducePage extends StatefulWidget {
   const IntroducePage({Key? key}) : super(key: key);
@@ -13,25 +15,7 @@ class IntroducePage extends StatefulWidget {
 class _IntroducePageState extends State<IntroducePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SizedBox(
-      width: double.infinity,
-      child: Column(
-        children: [
-          Expanded(
-            flex: 3,
-            child: Container(
-              color: Colors.black,
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-              color: Colors.white,
-            ),
-          )
-        ],
-      ),
-    ));
+    SizeConfig().init(context);
+    return Scaffold(body: Body());
   }
 }

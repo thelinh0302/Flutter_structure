@@ -12,7 +12,7 @@ class ButtonResponsive extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
+    return Container(
         child: Container(
           width: width,
           height: 48,
@@ -21,11 +21,13 @@ class ButtonResponsive extends StatelessWidget {
             borderRadius: BorderRadius.circular(Dimen.radiousButton)
           ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
+              Center( 
                 child: Text(
                   text!,
                   style: TextsStyle.titleLogin,
+                  textAlign: TextAlign.center,
                 ) ,
               )
             ],

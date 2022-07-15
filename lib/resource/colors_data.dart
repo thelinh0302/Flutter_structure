@@ -30,10 +30,14 @@ class ColorsData {
   // text
   static Color textSubject = primary;
   static Color textTitle = Color(0xFF0E3143);
+  static Color textTitleLogin = Colors.white;
   static Color textSubTitle = Color(0xFF0E3143).withOpacity(0.6);
   static Color textHeading = Color(0xFF0E3143);
   static Color textFaded = faded;
   static Color textCaption = Color(0xFF7F878E);
   static Color textLyrics = Colors.grey;
   static Color textConten = Colors.black;
+  //dot
+
+  static Color dot = Colors.grey;
 }

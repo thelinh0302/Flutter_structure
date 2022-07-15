@@ -10,14 +10,15 @@ class TextsStyle {
     fontSize: FontsSize.appBar,
   );
   static TextStyle titleLogin = TextStyle(
-    color: ColorsData.textTitle,
+    color: ColorsData.textTitleLogin,
     fontFamily: FontsName.semiBold,
-    fontSize: 26,
+    fontSize: 20,
   );
   static TextStyle title = TextStyle(
     color: ColorsData.textTitle,
     fontFamily: FontsName.semiBold,
     fontSize: FontsSize.title,
+    fontWeight: FontWeight.bold
   );
   static TextStyle subTitle = TextStyle(
     color: ColorsData.textSubTitle,
