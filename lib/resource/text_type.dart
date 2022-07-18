@@ -25,6 +25,11 @@ class TextsStyle {
     fontFamily: FontsName.medium,
     fontSize: FontsSize.subTitle,
   );
+   static TextStyle subTitleLink = TextStyle(
+    color: ColorsData.textLink,
+    fontFamily: FontsName.medium,
+    fontSize: FontsSize.subTitle,
+  );
   static TextStyle heading = TextStyle(
     color: ColorsData.textHeading,
     fontFamily: FontsName.medium,

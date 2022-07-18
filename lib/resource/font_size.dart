@@ -10,7 +10,7 @@ class FontsSize {
   static const double buttom = 20;
 
   static const double title = 26;
-  static const double subTitle = 16;
+  static const double subTitle = 15;
   static const double heading = 15;
   static const double caption = 13;
 

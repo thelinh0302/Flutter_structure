@@ -37,6 +37,7 @@ class ColorsData {
   static Color textCaption = Color(0xFF7F878E);
   static Color textLyrics = Colors.grey;
   static Color textConten = Colors.black;
+  static Color textLink = secondary;
   //dot
 
   static Color dot = Colors.grey;

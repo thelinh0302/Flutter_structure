@@ -5,6 +5,7 @@ import 'package:structure/resource/button_responsive.dart';
 import 'package:structure/resource/colors_data.dart';
 import 'package:structure/resource/size_config.dart';
 import 'package:structure/resource/text_type.dart';
+import 'package:structure/views/sign_in/sing_in.dart';
 
 import '../../../resource/constant.dart';
 
@@ -75,42 +76,48 @@ class _Body extends State<Body> {
                   }),
             ),
             Expanded(
-                flex: 2,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidht(20)
-                  ),
-                  child: Column(
-                    children: [
-                      Spacer(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: List.generate(3, (indexSlider) {
-                            return AnimatedContainer(
-                              duration: animationDuration,
-                              margin: EdgeInsets.only(top: 8),
-                              width: currentPage == indexSlider ? 20 : 8,
-                              height: 8,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color:currentPage == indexSlider ? ColorsData.secondary : ColorsData.dot.withOpacity(0.8)),
-                            );
-                          }),
-                      ),
-                      Spacer(),
-                      SizedBox(
-                        width: double.infinity,
-                        height: getProportionateScreenHeight(56),
+              flex: 2,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: getProportionateScreenWidht(20)),
+                child: Column(
+                  children: [
+                    Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(3, (indexSlider) {
+                        return AnimatedContainer(
+                          duration: animationDuration,
+                          margin: EdgeInsets.only(top: 8),
+                          width: currentPage == indexSlider ? 20 : 8,
+                          height: 8,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: currentPage == indexSlider
+                                  ? ColorsData.secondary
+                                  : ColorsData.dot.withOpacity(0.8)),
+                        );
+                      }),
+                    ),
+                    Spacer(),
+                    SizedBox(
+                      width: double.infinity,
+                      height: getProportionateScreenHeight(56),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, SignIn.routeName);
+                        },
                         child: ButtonResponsive(
                           isIcon: false,
                           text: 'GET STARTED',
                           // width: 80,
                         ),
                       ),
-                      Spacer(),     
-                    ],
-                  ),
+                    ),
+                    Spacer(),
+                  ],
                 ),
+              ),
             ),
           ],
         ),
