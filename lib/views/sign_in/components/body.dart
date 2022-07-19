@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:structure/resource/size_config.dart';
 import 'package:structure/resource/text_type.dart';
 
+import '../../../widgets/text_form_field.dart';
+import '../../../widgets/text_form_field_password.dart';
+
 class Body extends StatefulWidget {
   @override
   _BodyState createState() => _BodyState();
@@ -17,29 +20,32 @@ class _BodyState extends State<Body> {
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidht(20)),
       child: Column(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Welcome to",
-                style: TextsStyle.title,
-              ),
-              SizedBox(height: 10),
-              RichText(
-                textAlign: TextAlign.left,
-                softWrap: true,
-                text: TextSpan(children: [
-                  TextSpan(
-                      text: "Enter your Phone number or Email for sign in,",
-                      style: TextsStyle.subTitle),
-                  TextSpan(
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () => print("The word touched is"),
-                      text: " Or Create new account.",
-                      style: TextsStyle.subTitleLink),
-                ]),
-              )
-            ],
+          Padding(
+            padding: const EdgeInsets.only(right: 90),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Welcome to",
+                  style: TextsStyle.title,
+                ),
+                SizedBox(height: 10),
+                RichText(
+                  textAlign: TextAlign.left,
+                  softWrap: true,
+                  text: TextSpan(children: [
+                    TextSpan(
+                        text: "Enter your Phone number or Email for sign in,",
+                        style: TextsStyle.subTitle),
+                    TextSpan(
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => print("The word touched is"),
+                        text: " Or Create new account.",
+                        style: TextsStyle.subTitleLink),
+                  ]),
+                )
+              ],
+            ),
           ),
           SizedBox(
             height: 30,
@@ -63,17 +69,24 @@ class _SignInFormState extends State<SignInForm> {
   Widget build(BuildContext context) {
     return Form(
       child: Column(children: [
-        TextFormField(
-          decoration: const InputDecoration(
-              labelText: "Username", hintText: "Enter your username"),
+        TextFormFieldCustom(
+          hintText: 'Enter your username',
+          labelText: 'Username',
+          keyboardtype: TextInputType.text,
+          inputAction: TextInputAction.next,
+          isLabelEnabled: true,
         ),
         const SizedBox(
           height: 20,
         ),
-        TextFormField(
-          decoration: const InputDecoration(
-              labelText: "Password", hintText: "Enter your password"),
-        )
+        TextFormFieldPasswordCustom(
+          hintText: 'Enter your password',
+          labelText: 'Password',
+          keyboardtype: TextInputType.visiblePassword,
+          inputAction: TextInputAction.next,
+          isLabelEnabled: true,
+          isObscure: true,
+        ),
       ]),
     );
   }

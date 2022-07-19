@@ -61,4 +61,14 @@ class TextsStyle {
     fontFamily: FontsName.regular,
     fontSize: FontsSize.conten,
   );
+  static TextStyle textError = TextStyle(
+    color: ColorsData.errorText,
+    fontFamily: FontsName.regular,
+    fontSize: FontsSize.conten,
+  );
+  static TextStyle textInput = TextStyle(
+    color: ColorsData.textInput,
+    fontFamily: FontsName.regular,
+    fontSize: FontsSize.conten,
+  );
 }
