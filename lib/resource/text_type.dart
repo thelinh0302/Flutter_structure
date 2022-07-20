@@ -12,7 +12,13 @@ class TextsStyle {
   static TextStyle titleLogin = TextStyle(
     color: ColorsData.textTitleLogin,
     fontFamily: FontsName.semiBold,
-    fontSize: 20,
+    fontWeight: FontWeight.bold,
+    fontSize: 17,
+  );
+  static TextStyle titleLoginSocial = TextStyle(
+    color: ColorsData.textTitleLogin,
+    fontFamily: FontsName.semiBold,
+    fontSize: 14,
   );
   static TextStyle title = TextStyle(
     color: ColorsData.textTitle,

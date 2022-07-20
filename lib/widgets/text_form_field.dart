@@ -13,6 +13,7 @@ class TextFormFieldCustom extends StatefulWidget {
   bool isObscure;
   bool isCapitalized;
   bool isLabelEnabled;
+  TextEditingController controller;
   Function(String)? validator;
   TextFormFieldCustom(
       {Key? key,
@@ -20,6 +21,7 @@ class TextFormFieldCustom extends StatefulWidget {
       required this.labelText,
       required this.inputAction,
       required this.isLabelEnabled,
+      required this.controller,
       this.readOnly = false,
       this.isObscure = false,
       this.isCapitalized = false,
@@ -35,6 +37,7 @@ class _TextFormFieldCustomState extends State<TextFormFieldCustom> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.controller,
       readOnly: widget.readOnly,
       keyboardType: widget.keyboardtype,
       obscureText: widget.isObscure,

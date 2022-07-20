@@ -14,6 +14,7 @@ class TextFormFieldPasswordCustom extends StatefulWidget {
   bool isObscureText;
   bool isCapitalized;
   bool isLabelEnabled;
+    TextEditingController controller;
   Function(String)? validator;
   TextFormFieldPasswordCustom(
       {Key? key,
@@ -21,6 +22,8 @@ class TextFormFieldPasswordCustom extends StatefulWidget {
       required this.labelText,
       required this.inputAction,
       required this.isLabelEnabled,
+            required this.controller,
+
       this.readOnly = false,
       this.isObscure = false,
       this.isCapitalized = false,
@@ -38,6 +41,7 @@ class _TextFormFieldPasswordCustomState extends State<TextFormFieldPasswordCusto
   Widget build(BuildContext context) {
     return TextFormField(
       readOnly: widget.readOnly,
+            controller: widget.controller,
       keyboardType: widget.keyboardtype,
       obscureText: widget.isObscure,
       textCapitalization: widget.isCapitalized
