@@ -5,7 +5,7 @@ import 'package:structure/resource/button_responsive.dart';
 import 'package:structure/resource/colors_data.dart';
 import 'package:structure/resource/size_config.dart';
 import 'package:structure/resource/text_type.dart';
-import 'package:structure/views/sign_in/sing_in.dart';
+import 'package:structure/views/sign_in/sign_in.dart';
 
 import '../../../resource/constant.dart';
 
