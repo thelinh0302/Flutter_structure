@@ -38,7 +38,7 @@ class _BodyState extends State<Body> {
                         style: TextsStyle.subTitle),
                     TextSpan(
                         recognizer: TapGestureRecognizer()
-                          ..onTap = () => print("The word touched is"),
+                          ..onTap = () => Navigator.pushNamed(context, '/register'),
                         text: " Or Create new account.",
                         style: TextsStyle.subTitleLink),
                   ]),
