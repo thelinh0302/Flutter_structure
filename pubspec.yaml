@@ -37,7 +37,7 @@ dependencies:
   google_sign_in: any
   flutter_svg: any
   provider: any
-  
+  intl_phone_number_input: ^0.7.0+2
 
 dev_dependencies:
   flutter_test:

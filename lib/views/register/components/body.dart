@@ -102,12 +102,16 @@ class _SignUpFormState extends State<SignUpForm> {
               controller: password,
               isObscure: true,
               keyboardtype: TextInputType.visiblePassword),
-          SizedBox(height: 30,),
+          SizedBox(
+            height: 30,
+          ),
           SizedBox(
             width: double.infinity,
             height: getProportionateScreenHeight(46),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, '/otp');
+              },
               child: ButtonResponsive(
                 text: 'SIGN UP',
               ),
@@ -117,9 +121,11 @@ class _SignUpFormState extends State<SignUpForm> {
             height: 10,
           ),
           const Padding(
-            padding: EdgeInsets.only(top: 20,left: 20),
+            padding: EdgeInsets.only(top: 20, left: 20),
             child: Text(
-                'By Signing up you agree to our Terms Conditions & Privacy Policy.',textAlign: TextAlign.center,),
+              'By Signing up you agree to our Terms Conditions & Privacy Policy.',
+              textAlign: TextAlign.center,
+            ),
           ),
           const SizedBox(
             height: 30,
