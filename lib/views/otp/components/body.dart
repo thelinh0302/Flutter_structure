@@ -40,12 +40,9 @@ class _BodyState extends State<Body> {
                           textAlign: TextAlign.center,
                         ),
                         TweenAnimationBuilder(
-                            tween: Tween(begin: 30.0, end: 0),
+                            tween: Tween<double>(begin: 30.0, end: 0),
                             duration: Duration(seconds: 30),
-                            builder: (context, num, child) {
-                              final int seconds = num?.inSeconds % 60;
-                              Text("${num}");
-                            })
+                            builder: (context, double val, child) => Text("${val.toInt()}"))
                       ],
                     )
                   ],
