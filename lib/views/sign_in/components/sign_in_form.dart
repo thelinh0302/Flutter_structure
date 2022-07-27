@@ -59,7 +59,9 @@ class _SignInFormState extends State<SignInForm> {
           height: 20,
         ),
         InkWell(
-            onTap: (() =>  Navigator.pushNamed(context, ForgotPassword.routeName)), child: Text('Forget password?')),
+            onTap: (() =>
+                Navigator.pushNamed(context, ForgotPassword.routeName)),
+            child: Text('Forget password?')),
         const SizedBox(height: 30),
         SizedBox(
             width: double.infinity,
@@ -70,6 +72,7 @@ class _SignInFormState extends State<SignInForm> {
                   final value2 = controller2.text;
                   print(value1);
                   print(value2);
+                  Navigator.pushNamed(context, '/home');
                 },
                 child: ButtonResponsive(
                   text: 'SIGN IN',
