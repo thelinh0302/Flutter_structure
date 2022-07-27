@@ -75,6 +75,7 @@ class _SignUpFormState extends State<SignUpForm> {
   final username = TextEditingController();
   final email = TextEditingController();
   final password = TextEditingController();
+  final phone = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -94,6 +95,14 @@ class _SignUpFormState extends State<SignUpForm> {
               isLabelEnabled: true,
               controller: email,
               keyboardtype: TextInputType.emailAddress),
+          TextFormFieldCustom(
+              hintText: 'Enter your phone',
+              labelText: 'Phone',
+              inputAction: TextInputAction.next,
+              isLabelEnabled: true,
+              controller: password,
+              isObscure: true,
+              keyboardtype: TextInputType.number),
           TextFormFieldPasswordCustom(
               hintText: 'Enter your password',
               labelText: 'Password',

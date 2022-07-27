@@ -18,20 +18,17 @@ class Dimen {
   static const double paddingContentButtom = 15;
   // common
   static const double marginsContent = 15;
-
 }
-final otpInputDecoration = InputDecoration(
-      contentPadding:
-          EdgeInsets.symmetric(vertical: getProportionateScreenWidht(15)),
-      enabledBorder: outLineInputBorder(),
-      focusedBorder: outLineInputBorder(),
-      border: outLineInputBorder(),
-      
-  ); 
 
-OutlineInputBorder outLineInputBorder() {
-  return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(15),
-      borderSide:  const BorderSide(color: ColorsData.borderInput),
-  );
+final otpInputDecoration = InputDecoration(
+  contentPadding:
+      EdgeInsets.symmetric(vertical: getProportionateScreenWidht(15)),
+  enabledBorder: outLineInputBorder(),
+  focusedBorder: outLineInputBorder(),
+  border: outLineInputBorder(),
+);
+
+UnderlineInputBorder outLineInputBorder() {
+  return const UnderlineInputBorder(
+      borderSide: BorderSide(color: ColorsData.borderInput));
 }
