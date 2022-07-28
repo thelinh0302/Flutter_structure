@@ -21,17 +21,21 @@ class TextsStyle {
     fontSize: 14,
   );
   static TextStyle title = TextStyle(
-    color: ColorsData.textTitle,
-    fontFamily: Fonts.semibold,
-    fontSize: FontsSize.title,
-    fontWeight: FontWeight.bold
-  );
+      color: ColorsData.textTitle,
+      fontFamily: Fonts.semibold,
+      fontSize: FontsSize.title,
+      fontWeight: FontWeight.bold);
+  static TextStyle titleSection = TextStyle(
+      color: ColorsData.textTitle,
+      fontFamily: Fonts.semibold,
+      fontSize: FontsSize.titleSection,
+      fontWeight: FontWeight.bold);
   static TextStyle subTitle = TextStyle(
     color: ColorsData.textSubTitle,
     fontFamily: Fonts.medium,
     fontSize: FontsSize.subTitle,
   );
-   static TextStyle subTitleLink = TextStyle(
+  static TextStyle subTitleLink = TextStyle(
     color: ColorsData.textLink,
     fontFamily: Fonts.medium,
     fontSize: FontsSize.subTitle,
