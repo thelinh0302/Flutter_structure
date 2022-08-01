@@ -11,6 +11,9 @@ class Dimen {
   /// button
   static const double radiousButton = 10.0;
 
+  //chip
+  static const double chipRadius = 5.0;
+
   /// dialog
   static const double dialogRadius = 15;
 

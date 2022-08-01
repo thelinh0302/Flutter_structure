@@ -52,15 +52,28 @@ class TextsStyle {
   );
   static TextStyle caption = TextStyle(
     color: ColorsData.textCaption,
-    fontFamily: Fonts.light,
+    fontFamily: Fonts.regular,
     fontSize: FontsSize.caption,
-    fontStyle: FontStyle.italic,
+    // fontStyle: FontStyle.italic,
   );
   static TextStyle lyrics = TextStyle(
     color: ColorsData.textLyrics,
     fontFamily: Fonts.regular,
     fontSize: FontsSize.lyrics,
   );
+  static TextStyle textChip = TextStyle(
+    color: ColorsData.chip,
+    fontFamily: Fonts.regular,
+    fontSize: FontsSize.lyrics,
+  );
+
+  static TextStyle textDetail = TextStyle(
+    color: ColorsData.primary,
+    fontFamily: Fonts.regular,
+    fontWeight: FontWeight.w500,
+    fontSize: FontsSize.lyrics,
+  );
+
   static TextStyle subject = TextStyle(
     color: ColorsData.textSubject,
     fontFamily: Fonts.medium,

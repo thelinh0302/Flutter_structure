@@ -28,7 +28,7 @@ class ColorsData {
   static Color borderButtom = Colors.grey.shade50;
   static Color textButtom = Colors.black;
   static Color buttonSocialGG = Color(0xFF4285F4);
-    static Color buttonSocialFacebook = Color(0xFF395998);
+  static Color buttonSocialFacebook = Color(0xFF395998);
   // text
   static Color textSubject = primary;
   static Color textTitle = Color(0xFF0E3143);
@@ -41,6 +41,7 @@ class ColorsData {
   static Color textConten = Colors.black;
   static Color textLink = secondary;
   static Color errorText = Colors.red;
+  static Color chip = Colors.white;
 
   //dot
 // static Color iconSocial = Color(0x)
