@@ -27,7 +27,7 @@ class _SliderCustomState extends State<SliderCustom> {
       height: widget.heightBox,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 3,
+        itemCount: widget.data.length,
         itemBuilder: (_, index) {
           return Container(
             width: widget.widthCard,
@@ -42,7 +42,7 @@ class _SliderCustomState extends State<SliderCustom> {
                       borderRadius: BorderRadius.circular(15),
                       image: DecorationImage(
                           image: AssetImage(
-                              "assets/images/${widget.data?.images}"),
+                              "assets/images/${widget.data[index]['images']}"),
                           fit: BoxFit.cover),
                       color: Colors.black),
                 ),
@@ -51,7 +51,7 @@ class _SliderCustomState extends State<SliderCustom> {
                 ),
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Text('Daylight Coffee',
+                  child: Text(widget.data[index]['title'],
                       textAlign: TextAlign.left, style: TextsStyle.heading),
                 ),
                 const SizedBox(
@@ -59,7 +59,7 @@ class _SliderCustomState extends State<SliderCustom> {
                 ),
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Text('Colarodo, San Francisco',
+                  child: Text(widget.data[index]['descrip'],
                       textAlign: TextAlign.left, style: TextsStyle.lyrics),
                 ),
                 const SizedBox(
@@ -69,14 +69,14 @@ class _SliderCustomState extends State<SliderCustom> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ChipCustom(
-                      text: '4.5',
+                      text: widget.data[index]['star'],
                     ),
                     Text(
-                      '25min',
+                      widget.data[index]['minutes'],
                       style: TextsStyle.textDetail,
                     ),
                     Text(
-                      'Free delivery',
+                      widget.data[index]['type'],
                       style: TextsStyle.textDetail,
                     ),
                   ],
