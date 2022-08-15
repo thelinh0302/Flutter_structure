@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:structure/views/home/widget/widget_feature/widget_all_feature.dart';
 
-import '../../../resource/text_type.dart';
-import '../../../widgets/slider_custom.dart';
+import '../../../../resource/text_type.dart';
+import '../../../../widgets/slider_custom.dart';
 
 class WidgetFeature extends StatefulWidget {
   List<dynamic> list;
@@ -12,6 +14,15 @@ class WidgetFeature extends StatefulWidget {
 }
 
 class _WidgetFeatureState extends State<WidgetFeature> {
+  void _push() {
+    Navigator.of(context).push(MaterialPageRoute(
+      // we'll look at ColorDetailPage later
+      builder: (context) => Container(
+        child: Scaffold(),
+      ),
+    ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,9 +34,12 @@ class _WidgetFeatureState extends State<WidgetFeature> {
               'Featured Partners',
               style: TextsStyle.titleSection,
             ),
-            Text(
-              'See all',
-              style: TextsStyle.subTitleLink,
+            GestureDetector(
+              onTap: () => {_push()},
+              child: Text(
+                'See all',
+                style: TextsStyle.subTitleLink,
+              ),
             )
           ],
         ),

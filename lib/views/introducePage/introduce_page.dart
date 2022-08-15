@@ -10,10 +10,12 @@ class IntroducePage extends StatefulWidget {
   State<IntroducePage> createState() => _IntroducePageState();
 }
 
-class _IntroducePageState extends State<IntroducePage> {  
+class _IntroducePageState extends State<IntroducePage> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Scaffold(body: Body());
+    return Scaffold(
+      body: Body(),
+    );
   }
 }

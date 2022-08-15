@@ -12,9 +12,9 @@ import 'views/home/main.dart';
 //All our routes will be available here
 final Map<String, WidgetBuilder> routes = {
   IntroducePage.routeName: (context) => const IntroducePage(),
-  SignIn.routeName:(context) => const SignIn(),
-  ForgotPassword.routeName:(context) => const ForgotPassword(),
-  Register.routeName:(context) => const Register(),
-  OTP.routeName:(context) => const OTP(),
-  MainScreen.routeName:(context)=>  MainScreen()
+  SignIn.routeName: (context) => const SignIn(),
+  ForgotPassword.routeName: (context) => const ForgotPassword(),
+  Register.routeName: (context) => const Register(),
+  OTP.routeName: (context) => const OTP(),
+  MainScreen.routeName: (context) => MainScreen()
 };

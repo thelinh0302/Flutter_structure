@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../data_source/mock_data.dart';
 import 'widget/widget_ads.dart';
-import 'widget/widget_feature.dart';
+import 'widget/widget_feature/widget_feature.dart';
 import 'widget/widget_introduce.dart';
 import 'widget/widget_restaurant.dart';
 import 'widget/widget_type.dart';

@@ -38,7 +38,7 @@ dependencies:
   flutter_svg: any
   provider: any
   intl_phone_number_input: ^0.7.0+2
-
+  custom_navigator: ^0.3.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,124 +1,73 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:structure/resource/colors_data.dart';
-import 'package:structure/resource/text_type.dart';
-import 'package:structure/views/home/home_screen.dart';
-import 'package:structure/views/home/search_screen.dart';
+
+import '../../widgets/bottom_navigator.dart';
+import '../../widgets/tab_item.dart';
+import '../../widgets/tab_navigator.dart';
 
 class MainScreen extends StatefulWidget {
-  @override
-  static String routeName = '/home';
-
-  MainScreen({Key? key}) : super(key: key);
+  static String routeName = '/';
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<StatefulWidget> createState() => AppState();
 }
 
-class _MainScreenState extends State<MainScreen> {
-  List pages = [HomeScreen(), SearchScreen()];
+class AppState extends State<MainScreen> {
+  var _currentTab = TabItem.home;
+  final _navigatorKeys = {
+    TabItem.home: GlobalKey<NavigatorState>(),
+    TabItem.search: GlobalKey<NavigatorState>(),
+    TabItem.orders: GlobalKey<NavigatorState>(),
+    TabItem.profile: GlobalKey<NavigatorState>(),
+  };
 
-  int currentIndex = 0;
-
-  void onTap(int index) {
-    setState(() {
-      currentIndex = index;
-    });
+  void _selectTab(TabItem tabItem) {
+    if (tabItem == _currentTab) {
+      // pop to first route
+      _navigatorKeys[tabItem]!.currentState!.popUntil((route) => route.isFirst);
+    } else {
+      setState(() => _currentTab = tabItem);
+    }
   }
 
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          automaticallyImplyLeading: false,
-          elevation: 0.5,
-          title: Column(
-            children: [
-              Text('Delivery To', style: TextsStyle.subTitleLink),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('San Francisco', style: TextsStyle.titleAppBar),
-                  const Icon(
-                    Icons.arrow_drop_down,
-                    size: 20,
-                  ),
-                ],
-              )
-            ],
-          )),
-      body: pages[currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        unselectedFontSize: 0,
-        selectedFontSize: 0,
-        // type: BottomNavigationBarType.fixed,
-        onTap: onTap,
-        currentIndex: currentIndex,
-        backgroundColor: ColorsData.appBarBackground,
-        selectedItemColor: ColorsData.secondary,
-        unselectedItemColor: Colors.grey.withOpacity(0.5),
-        type: BottomNavigationBarType.fixed,
-        selectedLabelStyle: TextsStyle.subTitle,
-        unselectedLabelStyle: TextsStyle.subTitle,
-        showUnselectedLabels: true,
-        elevation: 1,
-        items: [
-          BottomNavigationBarItem(
-              icon: currentIndex == 0
-                  ? Stack(children: [
-                      Image.asset("assets/images/Active.png"),
-                      const Icon(
-                        Icons.home,
-                        size: 30,
-                      )
-                    ])
-                  : const Icon(
-                      Icons.home,
-                      size: 30,
-                    ),
-              label: 'Home'),
-          BottomNavigationBarItem(
-              icon: currentIndex == 1
-                  ? Stack(children: [
-                      Image.asset("assets/images/Active.png"),
-                      const Icon(
-                        Icons.search,
-                        size: 30,
-                      )
-                    ])
-                  : const Icon(
-                      Icons.search,
-                      size: 30,
-                    ),
-              label: 'Search'),
-          BottomNavigationBarItem(
-              icon: currentIndex == 2
-                  ? Stack(children: [
-                      Image.asset("assets/images/Active.png"),
-                      const Icon(
-                        Icons.featured_play_list,
-                        size: 30,
-                      )
-                    ])
-                  : const Icon(
-                      Icons.featured_play_list,
-                      size: 30,
-                    ),
-              label: 'Orders'),
-          BottomNavigationBarItem(
-              icon: currentIndex == 3
-                  ? Stack(children: [
-                      Image.asset("assets/images/Active.png"),
-                      const Icon(
-                        Icons.person,
-                        size: 30,
-                      )
-                    ])
-                  : const Icon(
-                      Icons.person,
-                      size: 30,
-                    ),
-              label: 'Profile'),
-        ],
+    return WillPopScope(
+      onWillPop: () async {
+        final isFirstRouteInCurrentTab =
+            !await _navigatorKeys[_currentTab]!.currentState!.maybePop();
+        if (isFirstRouteInCurrentTab) {
+          // if not on the 'main' tab
+          if (_currentTab != TabItem.home) {
+            // select 'main' tab
+            _selectTab(TabItem.home);
+            // back button handled by app
+            return false;
+          }
+        }
+        // let system handle back button if we're on the first route
+        return isFirstRouteInCurrentTab;
+      },
+      child: Scaffold(
+        body: Stack(children: <Widget>[
+          _buildOffstageNavigator(TabItem.home),
+          _buildOffstageNavigator(TabItem.search),
+          _buildOffstageNavigator(TabItem.orders),
+          _buildOffstageNavigator(TabItem.profile),
+        ]),
+        bottomNavigationBar: BottomNavigation(
+          currentTab: _currentTab,
+          onSelectTab: _selectTab,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildOffstageNavigator(TabItem tabItem) {
+    return Offstage(
+      offstage: _currentTab != tabItem,
+      child: TabNavigator(
+        navigatorKey: _navigatorKeys[tabItem],
+        tabItem: tabItem,
       ),
     );
   }

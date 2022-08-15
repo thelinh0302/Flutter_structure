@@ -72,7 +72,7 @@ class _SignInFormState extends State<SignInForm> {
                   final value2 = controller2.text;
                   print(value1);
                   print(value2);
-                  Navigator.pushNamed(context, '/home');
+                  Navigator.pushNamed(context, '/');
                 },
                 child: ButtonResponsive(
                   text: 'SIGN IN',
