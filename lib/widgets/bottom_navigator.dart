@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../resource/colors_data.dart';
+import '../resource/text_type.dart';
 import 'tab_item.dart';
 
 class BottomNavigation extends StatelessWidget {
@@ -10,7 +12,14 @@ class BottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      backgroundColor: ColorsData.appBarBackground,
+      selectedItemColor: ColorsData.secondary,
+      unselectedItemColor: Colors.grey.withOpacity(0.5),
       type: BottomNavigationBarType.fixed,
+      selectedLabelStyle: TextsStyle.subTitle,
+      unselectedLabelStyle: TextsStyle.subTitle,
+      showUnselectedLabels: true,
+      elevation: 1,
       items: [
         _buildItem(TabItem.home),
         _buildItem(TabItem.search),
@@ -27,15 +36,13 @@ class BottomNavigation extends StatelessWidget {
 
   BottomNavigationBarItem _buildItem(TabItem tabItem) {
     return BottomNavigationBarItem(
-      icon: Icon(
-        Icons.layers,
-        color: _colorTabMatching(tabItem),
-      ),
+      icon: currentTab == tabItem
+          ? Stack(children: [
+              Image.asset("assets/images/Active.png"),
+              tabIcon[tabItem]
+            ])
+          : tabIcon[tabItem],
       label: tabName[tabItem],
     );
-  }
-
-  Color _colorTabMatching(TabItem item) {
-    return currentTab == item ? Colors.grey : Colors.grey;
   }
 }

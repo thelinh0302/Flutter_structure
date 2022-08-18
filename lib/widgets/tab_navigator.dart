@@ -13,7 +13,6 @@ class TabNavigator extends StatelessWidget {
   TabNavigator({required this.navigatorKey, required this.tabItem});
   final GlobalKey<NavigatorState>? navigatorKey;
   final TabItem tabItem;
-
   void _push(BuildContext context, {int materialIndex: 500}) {
     var routeBuilders = _routeBuilders(context, materialIndex: materialIndex);
 
@@ -30,7 +29,8 @@ class TabNavigator extends StatelessWidget {
       {int materialIndex: 500}) {
     return {
       TabNavigatorRoutes.root: (context) => ListPage(
-            title: tabName[tabItem]!,
+            subTitle: subTitle[tabItem]!,
+            title: tabTitle[tabItem]!,
             onPush: (materialIndex) =>
                 _push(context, materialIndex: materialIndex),
           ),

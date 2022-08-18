@@ -49,7 +49,9 @@ class AppState extends State<MainScreen> {
       },
       child: Scaffold(
         body: Stack(children: <Widget>[
-          _buildOffstageNavigator(TabItem.home),
+          _buildOffstageNavigator(
+            TabItem.home,
+          ),
           _buildOffstageNavigator(TabItem.search),
           _buildOffstageNavigator(TabItem.orders),
           _buildOffstageNavigator(TabItem.profile),
