@@ -5,15 +5,22 @@ import '../views/home/home_screen.dart';
 import '../views/home/search_screen.dart';
 
 class ListPage extends StatelessWidget {
-  List pages = [HomeScreen(), SearchScreen()];
   static List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     SearchScreen(),
+    SearchScreen(),
+    SearchScreen(),
   ];
-  ListPage({Key? key, required this.title, this.subTitle, this.onPush})
+  const ListPage(
+      {Key? key,
+      required this.title,
+      required this.page,
+      this.subTitle,
+      this.onPush})
       : super(key: key);
   final String title;
   final bool? subTitle;
+  final int page;
   final ValueChanged<int>? onPush;
   @override
   Widget build(BuildContext context) {
@@ -40,9 +47,7 @@ class ListPage extends StatelessWidget {
           ],
         ),
       ),
-      body: IndexedStack(
-        children: _widgetOptions,
-      ),
+      body: _widgetOptions[page],
     );
   }
 }

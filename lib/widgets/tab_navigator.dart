@@ -13,8 +13,8 @@ class TabNavigator extends StatelessWidget {
   TabNavigator({required this.navigatorKey, required this.tabItem});
   final GlobalKey<NavigatorState>? navigatorKey;
   final TabItem tabItem;
-  void _push(BuildContext context, {int materialIndex: 500}) {
-    var routeBuilders = _routeBuilders(context, materialIndex: materialIndex);
+  void _push(BuildContext context) {
+    var routeBuilders = _routeBuilders(context);
 
     Navigator.push(
       context,
@@ -25,18 +25,13 @@ class TabNavigator extends StatelessWidget {
     );
   }
 
-  Map<String, WidgetBuilder> _routeBuilders(BuildContext context,
-      {int materialIndex: 500}) {
+  Map<String, WidgetBuilder> _routeBuilders(BuildContext context) {
     return {
       TabNavigatorRoutes.root: (context) => ListPage(
+            page: pages[tabItem],
             subTitle: subTitle[tabItem]!,
             title: tabTitle[tabItem]!,
-            onPush: (materialIndex) =>
-                _push(context, materialIndex: materialIndex),
-          ),
-      TabNavigatorRoutes.detail: (context) => ListPageDetail(
-            color: Colors.blue,
-            title: tabName[tabItem]!,
+            onPush: (materialIndex) => _push(context),
           ),
     };
   }

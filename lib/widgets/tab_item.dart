@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:structure/views/home/home_screen.dart';
+import 'package:structure/views/home/search_screen.dart';
 
 enum TabItem { home, search, orders, profile }
 
@@ -8,11 +10,19 @@ const Map<TabItem, String> tabName = {
   TabItem.search: 'Search',
   TabItem.profile: 'Profile'
 };
+
 const Map<TabItem, dynamic> subTitle = {
   TabItem.home: true,
   TabItem.orders: false,
   TabItem.search: false,
   TabItem.profile: false,
+};
+
+const Map<TabItem, dynamic> pages = {
+  TabItem.home: 0,
+  TabItem.search: 1,
+  TabItem.orders: 2,
+  TabItem.profile: 3
 };
 
 const Map<TabItem, String> tabTitle = {

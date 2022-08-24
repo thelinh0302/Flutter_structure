@@ -9,7 +9,7 @@ class ListPageDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: color,
+        backgroundColor: Colors.blue,
         title: const Text(
           'Detail page',
         ),

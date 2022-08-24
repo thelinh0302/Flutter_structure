@@ -18,7 +18,15 @@ class _WidgetFeatureState extends State<WidgetFeature> {
     Navigator.of(context).push(MaterialPageRoute(
       // we'll look at ColorDetailPage later
       builder: (context) => Container(
-        child: Scaffold(),
+        child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.blue,
+            title: const Text(
+              'Detail page',
+            ),
+          ),
+          body: const Text('page detial'),
+        ),
       ),
     ));
   }

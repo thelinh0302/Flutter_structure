@@ -12,8 +12,10 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('Search'),
+    return SafeArea(
+      child: Container(
+        child: Text("Search"),
+      ),
     );
   }
 }
