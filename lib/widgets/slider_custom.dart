@@ -81,7 +81,6 @@ class _SliderCustomState extends State<SliderCustom> {
                     ),
                   ],
                 )
-                // Text('asdasdas')
               ],
             ),
           );

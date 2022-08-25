@@ -74,6 +74,13 @@ class TextsStyle {
     fontSize: FontsSize.lyrics,
   );
 
+  static TextStyle textDetailFeature = TextStyle(
+    color: Colors.white,
+    fontFamily: Fonts.regular,
+    fontWeight: FontWeight.w500,
+    fontSize: FontsSize.lyrics,
+  );
+
   static TextStyle subject = TextStyle(
     color: ColorsData.textSubject,
     fontFamily: Fonts.medium,

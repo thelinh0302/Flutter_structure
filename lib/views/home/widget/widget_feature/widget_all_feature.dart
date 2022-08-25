@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:structure/resource/colors_data.dart';
 import 'package:structure/resource/text_type.dart';
+import 'package:structure/widgets/chip_custom.dart';
 
 import '../../../../data_source/mock_data.dart';
 
@@ -19,39 +20,86 @@ class _WidgetAllFeatureState extends State<WidgetAllFeature> {
         backgroundColor: ColorsData.appBarBackground,
         title: Text('Feature Partners', style: TextsStyle.titleAppBar),
       ),
-      body: GridView.count(
-        crossAxisCount: 4,
-        children: List.generate(
-            features.length,
-            (index) => Container(
-                  margin: const EdgeInsets.only(right: 10, left: 10),
-                  height: double.maxFinite,
-                  child: (Column(
+      body: Padding(
+        padding: EdgeInsets.only(right: 10, left: 10, top: 10),
+        child: GridView.builder(
+          itemCount: featuresAll.length,
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              mainAxisExtent: (MediaQuery.of(context).size.width / 2) * 1.6,
+              maxCrossAxisExtent: MediaQuery.of(context).size.width / 2),
+          itemBuilder: (context, index) {
+            return Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                image: DecorationImage(
+                    image: AssetImage(
+                        "assets/images/${featuresAll[index]['images']}"),
+                    fit: BoxFit.cover),
+              ),
+              child: Stack(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        height: 100,
-                        width: double.maxFinite,
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  "assets/images/${featuresAll[index]['images']}"),
-                              fit: BoxFit.cover),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10, left: 10),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Image.asset(
+                                    "assets/images/icons/fast-delivery.png"),
+                                Container(
+                                  margin: const EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    '25min',
+                                    style: TextsStyle.textDetailFeature,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Image.asset("assets/images/icons/Dollar.png"),
+                                Container(
+                                  margin: const EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    'Free',
+                                    style: TextsStyle.textDetailFeature,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text("rdsfsdfds",
-                            textAlign: TextAlign.left,
-                            style: TextsStyle.heading),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            bottom: 10, left: 10, right: 10),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Container(
+                              child: ChipCustom(text: "4.5"),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
-                  )),
-                )),
+                  )
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }

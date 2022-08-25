@@ -41,7 +41,7 @@ List<Map<String, dynamic>> featuresAll = [
     "star": '3.5',
     "minutes": "25min",
     "type": "Free delivery",
-    "images": "featureAll2.png"
+    "images": "featureAll3.png"
   },
   {
     "title": "Mario Italiano",
@@ -49,7 +49,15 @@ List<Map<String, dynamic>> featuresAll = [
     "star": '3.5',
     "minutes": "25min",
     "type": "Free delivery",
-    "images": "featureAll2.png"
+    "images": "featureAll4.png"
+  },
+  {
+    "title": "Mario Italiano",
+    "descrip": "Colarodo, San Francisco",
+    "star": '3.5',
+    "minutes": "25min",
+    "type": "Free delivery",
+    "images": "featureAll5.png"
   }
 ];
 List<Map<String, dynamic>> restaurant = [
