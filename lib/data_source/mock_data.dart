@@ -20,7 +20,7 @@ List<Map<String, dynamic>> features = [
 ];
 List<Map<String, dynamic>> featuresAll = [
   {
-    "title": "Daylight Coffe",
+    "title": "Tacos Nanchas",
     "descrip": "Colarodo, San Francisco",
     "star": '4.5',
     "minutes": "25min",
