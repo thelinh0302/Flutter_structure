@@ -15,6 +15,12 @@ class TextsStyle {
     fontWeight: FontWeight.bold,
     fontSize: 17,
   );
+  static TextStyle titleButton = TextStyle(
+    color: ColorsData.secondary,
+    fontFamily: Fonts.semibold,
+    fontWeight: FontWeight.bold,
+    fontSize: 17,
+  );
   static TextStyle titleLoginSocial = TextStyle(
     color: ColorsData.textTitleLogin,
     fontFamily: Fonts.semibold,
@@ -30,6 +36,7 @@ class TextsStyle {
       fontFamily: Fonts.semibold,
       fontSize: FontsSize.titleSection,
       fontWeight: FontWeight.bold);
+
   static TextStyle subTitle = TextStyle(
     color: ColorsData.textSubTitle,
     fontFamily: Fonts.medium,
