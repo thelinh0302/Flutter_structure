@@ -60,6 +60,48 @@ List<Map<String, dynamic>> featuresAll = [
     "images": "featureAll5.png"
   }
 ];
+List<Map<String, dynamic>> featureItems = [
+  {
+    "title": "Cookie Sandwich",
+    "descrip": ".Chinese",
+    "star": '4.5',
+    "minutes": "25min",
+    "type": "Free delivery",
+    "images": "featureItems1.png"
+  },
+  {
+    "title": "Chow Fun",
+    "descrip": ".Chinese",
+    "star": '3.5',
+    "minutes": "25min",
+    "type": "Free delivery",
+    "images": "featureItems2.png"
+  },
+  {
+    "title": "Dim Sum",
+    "descrip": ".Chinese",
+    "star": '3.5',
+    "minutes": "25min",
+    "type": "Free delivery",
+    "images": "featureItems2.png"
+  },
+  {
+    "title": "Mario Italiano",
+    "descrip": "Colarodo, San Francisco",
+    "star": '3.5',
+    "minutes": "25min",
+    "type": "Free delivery",
+    "images": "featureAll4.png"
+  },
+  {
+    "title": "Mario Italiano",
+    "descrip": "Colarodo, San Francisco",
+    "star": '3.5',
+    "minutes": "25min",
+    "type": "Free delivery",
+    "images": "featureAll5.png"
+  }
+];
 List<Map<String, dynamic>> restaurant = [
   {
     "title": "MCDonald`s",

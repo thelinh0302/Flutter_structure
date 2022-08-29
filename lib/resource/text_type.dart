@@ -42,6 +42,11 @@ class TextsStyle {
     fontFamily: Fonts.medium,
     fontSize: FontsSize.subTitle,
   );
+  static TextStyle titleTapbar = TextStyle(
+    color: ColorsData.textSubTitle,
+    fontFamily: Fonts.medium,
+    fontSize: FontsSize.titleTapbar,
+  );
   static TextStyle subTitleLink = TextStyle(
     color: ColorsData.textLink,
     fontFamily: Fonts.medium,

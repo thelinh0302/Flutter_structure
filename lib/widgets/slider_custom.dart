@@ -65,22 +65,24 @@ class _SliderCustomState extends State<SliderCustom> {
                 const SizedBox(
                   height: 3,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ChipCustom(
-                      text: widget.data[index]['star'],
-                    ),
-                    Text(
-                      widget.data[index]['minutes'],
-                      style: TextsStyle.textDetail,
-                    ),
-                    Text(
-                      widget.data[index]['type'],
-                      style: TextsStyle.textDetail,
-                    ),
-                  ],
-                )
+                widget.data[index]['test'] != null
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ChipCustom(
+                            text: widget.data[index]['star'],
+                          ),
+                          Text(
+                            widget.data[index]['minutes'],
+                            style: TextsStyle.textDetail,
+                          ),
+                          Text(
+                            widget.data[index]['type'],
+                            style: TextsStyle.textDetail,
+                          ),
+                        ],
+                      )
+                    : Container()
               ],
             ),
           );

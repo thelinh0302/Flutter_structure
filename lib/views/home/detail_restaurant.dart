@@ -3,10 +3,13 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:structure/resource/button_responsive.dart';
+import 'package:structure/resource/colors_data.dart';
 import 'package:structure/resource/text_type.dart';
 
+import '../../data_source/mock_data.dart';
 import '../../resource/button_customer.dart';
 import '../../resource/constant.dart';
+import '../../widgets/slider_custom.dart';
 
 class DetailRestaurant extends StatefulWidget {
   const DetailRestaurant({Key? key}) : super(key: key);
@@ -15,7 +18,8 @@ class DetailRestaurant extends StatefulWidget {
   State<DetailRestaurant> createState() => _DetailRestaurantState();
 }
 
-class _DetailRestaurantState extends State<DetailRestaurant> {
+class _DetailRestaurantState extends State<DetailRestaurant>
+    with TickerProviderStateMixin {
   @override
   ScrollController _scrollController = new ScrollController();
   bool lastStatus = true;
@@ -46,6 +50,7 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
   }
 
   Widget build(BuildContext context) {
+    TabController _tabController = TabController(length: 3, vsync: this);
     return NestedScrollView(
       controller: _scrollController,
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -124,7 +129,7 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(15.0),
           child: Column(
             children: [
               Column(
@@ -243,13 +248,84 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                   )
                 ],
               ),
-              Container(
-                child: Text('Section 2 '),
-              ),
+              const SizedBox(height: 20),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Featured Items',
+                      style: TextsStyle.titleSection,
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  SliderCustom(
+                    heightBox: 200,
+                    widthCard: 150,
+                    heightImage: 150,
+                    data: featureItems,
+                  ),
+                  TabBar(
+                    controller: _tabController,
+                    labelStyle: TextsStyle.titleTapbar,
+                    labelColor: Colors.black,
+                    unselectedLabelColor: Colors.grey,
+                    isScrollable: true,
+                    indicatorSize: TabBarIndicatorSize.label,
+                    indicator: CircleTabIndicator(
+                        color: ColorsData.secondary, radius: 4),
+                    tabs: [
+                      const Tab(text: "Sea Food"),
+                      const Tab(text: "Appetizers"),
+                      const Tab(text: "Dim Sums")
+                    ],
+                  ),
+                  SizedBox(
+                    height: 300,
+                    width: double.maxFinite,
+                    child: TabBarView(
+                      controller: _tabController,
+                      children: [
+                        const Text("Section 1"),
+                        const Text("Section 2"),
+                        const Text("Section 3"),
+                      ],
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
       ),
     );
+  }
+}
+
+class CircleTabIndicator extends BoxDecoration {
+  final Color color;
+  double radius;
+  CircleTabIndicator({required this.color, required this.radius});
+  @override
+  BoxPainter createBoxPainter([VoidCallback? onChanged]) {
+    return _CirclePainter(color: color, radius: radius);
+  }
+}
+
+class _CirclePainter extends BoxPainter {
+  final Color color;
+  double radius;
+  _CirclePainter({required this.color, required this.radius});
+  @override
+  void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
+    Paint _paint = Paint();
+    _paint.color = color;
+    _paint.isAntiAlias = true;
+    final Offset circleOffset = Offset(
+        configuration.size!.width / 2 - radius / 2,
+        configuration.size!.height - radius / 1);
+    canvas.drawCircle(offset + circleOffset, radius, _paint);
   }
 }
