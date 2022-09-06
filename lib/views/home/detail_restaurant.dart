@@ -283,12 +283,45 @@ class _DetailRestaurantState extends State<DetailRestaurant>
                     ],
                   ),
                   SizedBox(
-                    height: 300,
+                    height: double.maxFinite,
                     width: double.maxFinite,
                     child: TabBarView(
                       controller: _tabController,
                       children: [
-                        const Text("Section 1"),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Sea Food',
+                              style: TextsStyle.titleSection,
+                            ),
+                            ...food
+                                .map((e) => Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 10, bottom: 10),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Container(
+                                            width: 140,
+                                            height: 160,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                              image: const DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/images/itemFood2.png"),
+                                                  fit: BoxFit.cover),
+                                            ),
+                                          ),
+                                          Text('Title'),
+                                        ],
+                                      ),
+                                    ))
+                                .toList()
+                          ],
+                        ),
                         const Text("Section 2"),
                         const Text("Section 3"),
                       ],
