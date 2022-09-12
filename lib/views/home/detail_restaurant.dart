@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -22,6 +24,9 @@ class _DetailRestaurantState extends State<DetailRestaurant>
     with TickerProviderStateMixin {
   @override
   ScrollController _scrollController = new ScrollController();
+  late TabController _tabController;
+  StreamController<List<Map<String, dynamic>>> streamController =
+      StreamController();
   bool lastStatus = true;
   _scrollListener() {
     if (isShrink != lastStatus) {
@@ -40,6 +45,7 @@ class _DetailRestaurantState extends State<DetailRestaurant>
   void initState() {
     _scrollController = ScrollController();
     _scrollController.addListener(_scrollListener);
+    _tabController = TabController(length: 3, vsync: this);
     super.initState();
   }
 
@@ -49,8 +55,14 @@ class _DetailRestaurantState extends State<DetailRestaurant>
     super.dispose();
   }
 
+  @override
+  void didChangeDependencies() {
+    print('tab');
+    streamController.sink.add(food);
+    super.didChangeDependencies();
+  }
+
   Widget build(BuildContext context) {
-    TabController _tabController = TabController(length: 3, vsync: this);
     return NestedScrollView(
       controller: _scrollController,
       headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -268,6 +280,14 @@ class _DetailRestaurantState extends State<DetailRestaurant>
                     data: featureItems,
                   ),
                   TabBar(
+                    onTap: (value) {
+                      print(value);
+                      if (value == 0) {
+                        streamController.sink.add(food);
+                      } else {
+                        streamController.sink.add([]);
+                      }
+                    },
                     controller: _tabController,
                     labelStyle: TextsStyle.titleTapbar,
                     labelColor: Colors.black,
@@ -282,53 +302,37 @@ class _DetailRestaurantState extends State<DetailRestaurant>
                       const Tab(text: "Dim Sums")
                     ],
                   ),
-                  SizedBox(
-                    height: double.maxFinite,
-                    width: double.maxFinite,
-                    child: TabBarView(
-                      controller: _tabController,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                  StreamBuilder<List<Map<String, dynamic>>>(
+                    initialData: [],
+                    stream: streamController.stream,
+                    builder: (context, asyncSnapshot) => ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: asyncSnapshot.data?.length,
+                      itemBuilder: (context, index) => Padding(
+                        padding: const EdgeInsets.only(top: 10, bottom: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              'Sea Food',
-                              style: TextsStyle.titleSection,
+                            Container(
+                              width: 140,
+                              height: 160,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                image: const DecorationImage(
+                                    image: AssetImage(
+                                        "assets/images/itemFood2.png"),
+                                    fit: BoxFit.cover),
+                              ),
                             ),
-                            ...food
-                                .map((e) => Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 10, bottom: 10),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Container(
-                                            width: 140,
-                                            height: 160,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
-                                              image: const DecorationImage(
-                                                  image: AssetImage(
-                                                      "assets/images/itemFood2.png"),
-                                                  fit: BoxFit.cover),
-                                            ),
-                                          ),
-                                          Text('Title'),
-                                        ],
-                                      ),
-                                    ))
-                                .toList()
+                            Text('Title'),
                           ],
                         ),
-                        const Text("Section 2"),
-                        const Text("Section 3"),
-                      ],
+                      ),
                     ),
-                  ),
+                  )
                 ],
-              )
+              ),
             ],
           ),
         ),

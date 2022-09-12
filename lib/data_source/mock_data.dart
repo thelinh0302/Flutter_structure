@@ -161,6 +161,22 @@ List<Map<String, dynamic>> food = [
     "minutes": "25min",
     "type": "Free delivery",
     "images": "itemFood4.png"
+  },
+  {
+    "title": "Mario Italiano",
+    "descrip": "Colarodo, San Francisco",
+    "star": '3.5',
+    "minutes": "25min",
+    "type": "Free delivery",
+    "images": "itemFood4.png"
+  },
+  {
+    "title": "Mario Italiano",
+    "descrip": "Colarodo, San Francisco",
+    "star": '3.5',
+    "minutes": "25min",
+    "type": "Free delivery",
+    "images": "itemFood4.png"
   }
 ];
 List<Map<String, dynamic>> type = [
